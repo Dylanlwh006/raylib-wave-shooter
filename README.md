@@ -54,20 +54,66 @@ A top-down 2D wave shooter built in C++ with Raylib. This project was developed 
 ## Project Structure
 
 ```text
-src/
-  core/        Game loop, game state, constants
-  entities/    Player, enemies, boss, base entity classes
-  systems/     Wave manager, collision, shop, save manager
-  ui/          HUD, buttons, start screen, fantasy text styling
-  weapons/     Bullet logic
+Project Structure
 
-assets/
-  images/      Sprites, level screens, UI art
-  sounds/      Background soundtrack
-
-data/
-  save.txt     Saved game state
-  highscore.txt
+SurvivalShooter/
+│
+├── src/                         Source code files
+│   │
+│   ├── core/                    Main game control and global settings
+│   │   ├── Game.h
+│   │   ├── Game.cpp
+│   │   ├── GameState.h
+│   │   └── Constants.h
+│   │
+│   ├── entities/                Player and enemy classes
+│   │   ├── Entity.h
+│   │   ├── Player.h
+│   │   ├── Player.cpp
+│   │   ├── Enemy.h
+│   │   ├── Enemy.cpp
+│   │   ├── BasicEnemy.h
+│   │   ├── BasicEnemy.cpp
+│   │   ├── FastEnemy.h
+│   │   ├── FastEnemy.cpp
+│   │   ├── TankEnemy.h
+│   │   └── TankEnemy.cpp
+│   │
+│   ├── weapons/                 Bullet and weapon-related logic
+│   │   ├── Bullet.h
+│   │   └── Bullet.cpp
+│   │
+│   ├── systems/                 Game systems and managers
+│   │   ├── WaveManager.h
+│   │   ├── WaveManager.cpp
+│   │   ├── Collision.h
+│   │   ├── Collision.cpp
+│   │   ├── Shop.h
+│   │   ├── Shop.cpp
+│   │   ├── SaveManager.h
+│   │   └── SaveManager.cpp
+│   │
+│   └── ui/                      User interface components
+│       ├── HUD.h
+│       ├── HUD.cpp
+│       ├── Button.h
+│       └── Button.cpp
+│
+├── assets/                      Game assets
+│   ├── images/                  Sprites, backgrounds, icons, and UI images
+│   └── sounds/                  Sound effects and background music
+│
+├── data/                        Saved game data
+│   ├── highscore.txt            Stores highest score, highest wave, and total kills
+│   └── save.txt                 Stores saved game progress, if implemented
+│
+├── docs/                        Project documentation
+│   ├── report.pdf
+│   ├── screenshots/
+│   └── class_diagram.png
+│
+├── README.md                    Project overview and instructions
+└── Makefile                     Build instructions
 ```
 
 ## Build And Run
