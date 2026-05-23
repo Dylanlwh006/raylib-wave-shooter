@@ -143,10 +143,6 @@ build-MinGW-W64.bat
 - Premake-generated build configuration
 - MinGW-w64 toolchain
 
-## Portfolio Note
-
-This project demonstrates practical engineering skills relevant to embedded, electrical, information, and interactive systems work: real-time update loops, state machines, resource management, file persistence, modular C++ design, and user-facing system integration.
-
 ## Future Improvements
 
 - Add controller support
