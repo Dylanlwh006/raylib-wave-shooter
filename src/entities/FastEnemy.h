@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "raylib.h"
 
+// Low-health enemy variant that trades durability for movement speed.
 class FastEnemy : public Enemy
 {
 private:

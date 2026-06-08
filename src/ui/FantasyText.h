@@ -4,6 +4,7 @@
 
 #include <cstring>
 
+// These helpers apply the same layered fantasy treatment to every UI label.
 inline int MeasureFantasyText(const char *text, int fontSize)
 {
 	return MeasureText(text, fontSize);

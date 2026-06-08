@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "raylib.h"
 
+// Player-controlled entity with movement, aiming, health, and fire timing.
 class Player : public Entity
 {
 private:

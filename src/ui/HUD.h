@@ -2,6 +2,7 @@
 
 #include "entities/Player.h"
 
+// Draws score, wave, and player-health information during gameplay.
 class HUD
 {
 private:

@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 
+// Displays the opening artwork until the user provides keyboard or mouse input.
 class StartScreen
 {
 private:

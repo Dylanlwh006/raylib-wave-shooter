@@ -1,5 +1,6 @@
 #pragma once
 
+// Shared tuning values keep gameplay balancing out of implementation code.
 namespace Constants
 {
 	constexpr int SCREEN_WIDTH = 800;

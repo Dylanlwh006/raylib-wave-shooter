@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "raylib.h"
 
+// Final-wave enemy identified separately so its death can trigger victory.
 class Boss : public Enemy
 {
 private:

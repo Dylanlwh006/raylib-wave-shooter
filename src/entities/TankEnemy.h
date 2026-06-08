@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "raylib.h"
 
+// Slow enemy variant with increased health.
 class TankEnemy : public Enemy
 {
 private:

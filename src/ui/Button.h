@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 
+// Reusable mouse-driven button with hover styling and centered text.
 class Button
 {
 private:

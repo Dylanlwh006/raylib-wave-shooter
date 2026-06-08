@@ -3,6 +3,7 @@
 #include "Enemy.h"
 #include "raylib.h"
 
+// Standard enemy used throughout the normal waves.
 class BasicEnemy : public Enemy
 {
 private:

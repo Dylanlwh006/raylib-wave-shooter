@@ -126,6 +126,11 @@ GENERATED += $(OBJDIR)/Collision.o
 GENERATED += $(OBJDIR)/Enemy.o
 GENERATED += $(OBJDIR)/FastEnemy.o
 GENERATED += $(OBJDIR)/Game.o
+GENERATED += $(OBJDIR)/GameDraw.o
+GENERATED += $(OBJDIR)/GameInput.o
+GENERATED += $(OBJDIR)/GameResources.o
+GENERATED += $(OBJDIR)/GameSpawning.o
+GENERATED += $(OBJDIR)/GameUpdate.o
 GENERATED += $(OBJDIR)/HUD.o
 GENERATED += $(OBJDIR)/Player.o
 GENERATED += $(OBJDIR)/SaveManager.o
@@ -142,6 +147,11 @@ OBJECTS += $(OBJDIR)/Collision.o
 OBJECTS += $(OBJDIR)/Enemy.o
 OBJECTS += $(OBJDIR)/FastEnemy.o
 OBJECTS += $(OBJDIR)/Game.o
+OBJECTS += $(OBJDIR)/GameDraw.o
+OBJECTS += $(OBJDIR)/GameInput.o
+OBJECTS += $(OBJDIR)/GameResources.o
+OBJECTS += $(OBJDIR)/GameSpawning.o
+OBJECTS += $(OBJDIR)/GameUpdate.o
 OBJECTS += $(OBJDIR)/HUD.o
 OBJECTS += $(OBJDIR)/Player.o
 OBJECTS += $(OBJDIR)/SaveManager.o
@@ -214,6 +224,21 @@ endif
 # #############################################
 
 $(OBJDIR)/Game.o: src/core/Game.cpp
+	@echo "$(notdir $<)"
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/GameDraw.o: src/core/GameDraw.cpp
+	@echo "$(notdir $<)"
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/GameInput.o: src/core/GameInput.cpp
+	@echo "$(notdir $<)"
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/GameResources.o: src/core/GameResources.cpp
+	@echo "$(notdir $<)"
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/GameSpawning.o: src/core/GameSpawning.cpp
+	@echo "$(notdir $<)"
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/GameUpdate.o: src/core/GameUpdate.cpp
 	@echo "$(notdir $<)"
 	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 $(OBJDIR)/BasicEnemy.o: src/entities/BasicEnemy.cpp

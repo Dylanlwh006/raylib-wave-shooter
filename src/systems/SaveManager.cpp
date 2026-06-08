@@ -4,6 +4,7 @@
 
 bool SaveManager::SaveGame(const char *filePath, const SaveData &data)
 {
+	// Save one value per line or group to keep the save file simple to inspect.
 	std::ofstream saveFile(filePath);
 	if (!saveFile.is_open())
 	{
@@ -32,6 +33,7 @@ bool SaveManager::SaveGame(const char *filePath, const SaveData &data)
 
 bool SaveManager::LoadGame(const char *filePath, SaveData &data)
 {
+	// Load the same fields written by SaveGame and clamp enemy count for safety.
 	std::ifstream saveFile(filePath);
 	if (!saveFile.is_open())
 	{
@@ -78,6 +80,7 @@ bool SaveManager::LoadGame(const char *filePath, SaveData &data)
 
 int SaveManager::LoadHighScore(const char *filePath)
 {
+	// Missing or invalid high score files start from zero.
 	std::ifstream highScoreFile(filePath);
 	if (!highScoreFile.is_open())
 	{

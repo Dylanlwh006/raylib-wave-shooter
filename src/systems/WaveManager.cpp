@@ -29,6 +29,7 @@ WaveManager::WaveManager(const std::vector<Texture2D *> &textures, int enemiesEa
 
 void WaveManager::StartFirstWave()
 {
+	// The first wave begins immediately without showing a loading screen.
 	nextLoadingIndex = 0;
 	loading = false;
 	spawnWaveRequested = true;
@@ -38,6 +39,7 @@ void WaveManager::StartFirstWave()
 
 void WaveManager::StartNextWave()
 {
+	// Later waves pause on a loading screen before requesting enemy spawning.
 	if (nextLoadingIndex >= (int)levelTextures.size())
 	{
 		completed = true;
@@ -78,6 +80,13 @@ void WaveManager::HandleInput()
 
 	if (GetKeyPressed() != 0 || IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
 	{
+		// After wave 9, show the level_9 screen first, then the boss screen.
+		if (nextLoadingIndex == Constants::BOSS_LEVEL - 2 && (int)levelTextures.size() >= Constants::BOSS_LEVEL)
+		{
+			nextLoadingIndex++;
+			return;
+		}
+
 		loading = false;
 		spawnWaveRequested = true;
 	}
@@ -151,14 +160,27 @@ int WaveManager::GetCurrentWaveNumber() const
 {
 	if (currentSpawnHasLoadingScreen)
 	{
-		return nextLoadingIndex + 2;
+		int nextWaveNumber = nextLoadingIndex + 2;
+		if (nextWaveNumber > Constants::BOSS_LEVEL)
+		{
+			return Constants::BOSS_LEVEL;
+		}
+
+		return nextWaveNumber;
 	}
 
-	return 1;
+	int currentWaveNumber = nextLoadingIndex + 1;
+	if (currentWaveNumber > Constants::BOSS_LEVEL)
+	{
+		return Constants::BOSS_LEVEL;
+	}
+
+	return currentWaveNumber;
 }
 
 int WaveManager::GetEnemyCountForCurrentWave() const
 {
+	// Normal waves grow by one enemy each level; the boss wave uses no normal enemies.
 	if (GetCurrentWaveNumber() >= Constants::BOSS_LEVEL)
 	{
 		return 0;

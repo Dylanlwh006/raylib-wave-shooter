@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "raylib.h"
 
+// Polymorphic enemy base containing shared movement, combat, and hitbox logic.
 class Enemy : public Entity
 {
 protected:

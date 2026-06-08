@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 
+// Common transform, texture, drawing, and collision data for game objects.
 class Entity
 {
 protected:

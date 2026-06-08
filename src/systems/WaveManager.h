@@ -4,6 +4,7 @@
 
 #include <vector>
 
+// Tracks loading-screen progression and requests each wave at the correct time.
 class WaveManager
 {
 private:

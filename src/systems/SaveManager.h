@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 
+// Serializable snapshot of the player, wave, and currently active enemies.
 struct SaveData
 {
 	int coins;
@@ -22,6 +23,7 @@ struct SaveData
 	int enemyHealth[2];
 };
 
+// Reads and writes game snapshots and the persistent high score.
 class SaveManager
 {
 public:

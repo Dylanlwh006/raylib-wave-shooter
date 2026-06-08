@@ -1,153 +1,159 @@
 # Freedom: Raylib Wave Shooter
 
-A top-down 2D wave shooter built in C++ with Raylib. This project was developed as a portfolio game project for an EEIT student, with focus on game-loop architecture, collision systems, wave progression, state management, and a polished player-facing experience.
+Freedom is a top-down 2D wave shooter built with C++ and Raylib. The player moves with the keyboard, aims with the mouse, survives escalating enemy waves, earns coins, buys upgrades, saves progress, and fights a final boss.
 
-## Overview
-
-`Freedom` is an arcade-style survival shooter where the player fights through escalating enemy waves, earns coins, buys upgrades, saves progress, and battles a final boss. The game includes custom sprites, loading screens, a soundtrack, persistent high scores, and a medieval fantasy-inspired UI style.
+The project focuses on a clear real-time game loop, object-oriented entity design, collision handling, wave progression, UI screens, save/load persistence, and a modular C++ source layout.
 
 ## Features
 
-- Top-down WASD player movement with mouse aiming
-- Continuous shooting system with bullet cooldown
-- Wave-based enemy progression across 10 levels
-- Level 1 starts with 5 enemies; each later normal level adds 1 enemy
-- Level 10 spawns only the boss
-- 1-2 enemies can be active at the same time during normal waves
-- Enemy types:
-  - Levels 1-3: basic enemies
-  - Levels 4-6: basic and tank enemies
-  - Levels 7-9: basic, tank, and fast enemies
-- Weighted enemy spawning after level 3 to reduce basic enemy frequency
+- WASD movement with mouse aiming
+- Cooldown-based bullet shooting
+- Ten-wave progression with loading screens between waves
+- Basic, tank, fast, and boss enemy types
 - Boss wave and victory screen
-- Player health, damage, death, and restart flow
-- Game over screen using custom artwork
-- Coins and persistent high score system
-- Upgrade shop with medkit and shooting-speed upgrade
+- Player health, enemy contact damage, game-over state, and restart flow
+- Coin rewards, medkit purchase, and shooting-speed upgrade
 - Pause menu with save/load support
-- Wave counter and HUD
-- Background soundtrack
-- Textured fantasy UI styling
+- Persistent high score in `data/highscore.txt`
+- Save data stored in `data/save.txt`
+- Custom sprites, level screens, UI artwork, and background music
+- Modular C++ source files organized by game responsibility
 
 ## Controls
 
-| Action                  | Input                  |
-| ----------------------- | ---------------------- |
-| Move                    | `W`, `A`, `S`, `D`     |
-| Aim                     | Mouse                  |
-| Shoot                   | Hold left mouse button |
-| Open shop               | Click shop icon        |
-| Pause                   | `P`                    |
+| Action | Input |
+| --- | --- |
+| Move | `W`, `A`, `S`, `D` |
+| Aim | Mouse movement |
+| Shoot | Hold left mouse button |
+| Open shop | Click the shop icon |
+| Pause | `P` |
+| Save progress | Pause with `P`, then click Save |
+| Load progress | Pause with `P`, then click Load |
 | Continue loading screen | Any key or mouse click |
-| Restart after death     | Click restart button   |
+| Restart after game over | Click the restart button |
 
-## Technical Highlights
+## Gameplay
 
-- Built with modern C++ and Raylib
-- Object-oriented entity hierarchy for player, enemies, bullets, and boss logic
-- Dedicated systems for waves, collision, shop behavior, save/load, and HUD rendering
-- Persistent save data stored in `data/save.txt`
-- Persistent high score stored in `data/highscore.txt`
-- Asset-driven presentation with sprites, loading screens, game-over screen, victory screen, and music
-- Modular source layout designed for readability and extension
+The game starts on a title screen. After the player begins, wave 1 starts immediately. Normal waves grow in size and difficulty, while only one or two normal enemies are active at a time to keep combat readable.
 
-## Project Structure
+Enemy progression:
 
-```text
-Project Structure
+- Waves 1-3: basic enemies
+- Waves 4-6: basic and tank enemies
+- Waves 7-9: basic, tank, and fast enemies
+- Wave 10: boss only
 
-SurvivalShooter/
-│
-├── src/                         Source code files
-│   │
-│   ├── core/                    Main game control and global settings
-│   │   ├── Game.h
-│   │   ├── Game.cpp
-│   │   ├── GameState.h
-│   │   └── Constants.h
-│   │
-│   ├── entities/                Player and enemy classes
-│   │   ├── Entity.h
-│   │   ├── Player.h
-│   │   ├── Player.cpp
-│   │   ├── Enemy.h
-│   │   ├── Enemy.cpp
-│   │   ├── BasicEnemy.h
-│   │   ├── BasicEnemy.cpp
-│   │   ├── FastEnemy.h
-│   │   ├── FastEnemy.cpp
-│   │   ├── TankEnemy.h
-│   │   └── TankEnemy.cpp
-│   │
-│   ├── weapons/                 Bullet and weapon-related logic
-│   │   ├── Bullet.h
-│   │   └── Bullet.cpp
-│   │
-│   ├── systems/                 Game systems and managers
-│   │   ├── WaveManager.h
-│   │   ├── WaveManager.cpp
-│   │   ├── Collision.h
-│   │   ├── Collision.cpp
-│   │   ├── Shop.h
-│   │   ├── Shop.cpp
-│   │   ├── SaveManager.h
-│   │   └── SaveManager.cpp
-│   │
-│   └── ui/                      User interface components
-│       ├── HUD.h
-│       ├── HUD.cpp
-│       ├── Button.h
-│       └── Button.cpp
-│
-├── assets/                      Game assets
-│   ├── images/                  Sprites, backgrounds, icons, and UI images
-│   └── sounds/                  Sound effects and background music
-│
-├── data/                        Saved game data
-│   ├── highscore.txt            Stores highest score, highest wave, and total kills
-│   └── save.txt                 Stores saved game progress, if implemented
-│
-├── docs/                        Project documentation
-│   ├── report.pdf
-│   ├── screenshots/
-│   └── class_diagram.png
-│
-├── README.md                    Project overview and instructions
-└── Makefile                     Build instructions
-```
+After clearing wave 9, the game shows the final transition screens before spawning the boss. Defeating the boss displays the victory screen.
 
 ## Build And Run
 
-This project uses the Raylib Windows makefile generated by Premake.
+This repository uses Premake-generated makefiles and Raylib.
+
+On Windows with MinGW-w64 available in `PATH`, build with:
 
 ```bash
-mingw32-make -f raylib-wave-shooter.make
+mingw32-make config=debug_x64
 ```
 
-Then run:
+Run the game:
 
 ```bash
 bin/Debug/raylib-wave-shooter.exe
 ```
 
-You can also use the included build scripts:
+For a clean rebuild:
+
+```bash
+mingw32-make clean
+mingw32-make config=debug_x64
+```
+
+You can also use the included Windows build script:
 
 ```bash
 build-MinGW-W64.bat
 ```
 
+## Project Structure
+
+```text
+raylib-wave-shooter/
+|
++-- assets/
+|   +-- images/              Sprites, screen art, UI icons, and level screens
+|   +-- sounds/              Background music
+|
++-- build/                   Premake, Raylib build files, and generated build data
++-- data/                    Save file and high-score file
++-- include/                 Shared generated include file
++-- resources/               Raylib template resource
+|
++-- src/
+|   +-- core/                Game controller, state, constants, and split Game logic
+|   |   +-- Constants.h
+|   |   +-- Game.h
+|   |   +-- Game.cpp
+|   |   +-- GameResources.cpp
+|   |   +-- GameInput.cpp
+|   |   +-- GameSpawning.cpp
+|   |   +-- GameUpdate.cpp
+|   |   +-- GameDraw.cpp
+|   |   +-- GameState.h
+|   |
+|   +-- entities/            Entity, player, enemies, and enemy variants
+|   +-- systems/             Collision, save/load, shop, and wave management
+|   +-- ui/                  HUD, buttons, start screen, and text helpers
+|   +-- weapons/             Bullet logic
+|   |
+|   +-- application.rc
+|   +-- icon.ico
+|   +-- main.cpp
+|
++-- Makefile
++-- raylib.make
++-- raylib-clean.make
++-- raylib-wave-shooter.make
++-- build-MinGW-W64.bat
++-- README.md
+```
+
+Generated folders such as `bin/` and `obj/` are created by the build process and are not required for source review.
+
+## Code Organization
+
+The `Game` class coordinates the main loop and high-level state, but its implementation is split by responsibility:
+
+- `GameResources.cpp`: loading and unloading textures/music
+- `GameInput.cpp`: menus, pause, shop, save/load input
+- `GameSpawning.cpp`: enemy creation and wave spawn rules
+- `GameUpdate.cpp`: gameplay updates, collisions, score, death, and victory
+- `GameDraw.cpp`: rendering the active screen and UI
+
+Entities use inheritance for shared behavior:
+
+- `Entity` is the base class for transform, drawing, and hitbox data.
+- `Player`, `Enemy`, and `Bullet` inherit from `Entity`.
+- `BasicEnemy`, `FastEnemy`, `TankEnemy`, and `Boss` inherit from `Enemy`.
+
 ## Technologies
 
-- C++
+- C++17
 - Raylib
-- Premake-generated build configuration
-- MinGW-w64 toolchain
+- MinGW-w64
+- Premake-generated Makefiles
+
+## Notes
+
+- Run the executable from the project layout shown above so relative asset and data paths resolve correctly.
+- The game expects `assets/`, `resources/`, and `data/` to remain available beside the executable/build layout.
+- Save/load uses simple text files so saved values can be inspected during testing.
 
 ## Future Improvements
 
 - Add controller support
-- Add enemy attack variety and boss phases
+- Add more enemy attack patterns and boss phases
 - Add difficulty settings
-- Add animated sprites and particle effects
-- Improve save-version compatibility
+- Add animation and particle effects
+- Improve save-file versioning
 - Add automated gameplay/system tests where practical

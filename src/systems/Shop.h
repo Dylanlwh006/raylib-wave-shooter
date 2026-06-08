@@ -4,6 +4,7 @@
 #include "raylib.h"
 #include "ui/Button.h"
 
+// Handles the shop overlay, purchases, and player upgrade effects.
 class Shop
 {
 private:

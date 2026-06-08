@@ -19,6 +19,7 @@
 #include <memory>
 #include <vector>
 
+// Owns resources and coordinates input, state changes, gameplay, saving, and drawing.
 class Game
 {
 private:

@@ -3,6 +3,7 @@
 #include "entities/Entity.h"
 #include "raylib.h"
 
+// Projectile entity carrying velocity and damage for collision processing.
 class Bullet : public Entity
 {
 private:
