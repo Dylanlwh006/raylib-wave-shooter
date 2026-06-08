@@ -79,43 +79,37 @@ build-MinGW-W64.bat
 
 ```text
 raylib-wave-shooter/
-|
-+-- assets/
-|   +-- images/              Sprites, screen art, UI icons, and level screens
-|   +-- sounds/              Background music
-|
-+-- build/                   Premake, Raylib build files, and generated build data
-+-- data/                    Save file and high-score file
-+-- include/                 Shared generated include file
-+-- resources/               Raylib template resource
-|
-+-- src/
-|   +-- core/                Game controller, state, constants, and split Game logic
-|   |   +-- Constants.h
-|   |   +-- Game.h
-|   |   +-- Game.cpp
-|   |   +-- GameResources.cpp
-|   |   +-- GameInput.cpp
-|   |   +-- GameSpawning.cpp
-|   |   +-- GameUpdate.cpp
-|   |   +-- GameDraw.cpp
-|   |   +-- GameState.h
-|   |
-|   +-- entities/            Entity, player, enemies, and enemy variants
-|   +-- systems/             Collision, save/load, shop, and wave management
-|   +-- ui/                  HUD, buttons, start screen, and text helpers
-|   +-- weapons/             Bullet logic
-|   |
-|   +-- application.rc
-|   +-- icon.ico
-|   +-- main.cpp
-|
-+-- Makefile
-+-- raylib.make
-+-- raylib-clean.make
-+-- raylib-wave-shooter.make
-+-- build-MinGW-W64.bat
-+-- README.md
+|-- assets/
+|   |-- images/                 Sprites, screen art, UI icons, and level screens
+|   `-- sounds/                 Background music
+|-- build/                      Premake, Raylib build files, and generated build data
+|-- data/                       Save file and high-score file
+|-- include/                    Shared generated include file
+|-- resources/                  Raylib template resource
+|-- src/
+|   |-- core/                   Game controller, state, constants, and split Game logic
+|   |   |-- Constants.h
+|   |   |-- Game.h
+|   |   |-- Game.cpp
+|   |   |-- GameResources.cpp
+|   |   |-- GameInput.cpp
+|   |   |-- GameSpawning.cpp
+|   |   |-- GameUpdate.cpp
+|   |   |-- GameDraw.cpp
+|   |   `-- GameState.h
+|   |-- entities/               Entity, player, enemies, and enemy variants
+|   |-- systems/                Collision, save/load, shop, and wave management
+|   |-- ui/                     HUD, buttons, start screen, and text helpers
+|   |-- weapons/                Bullet logic
+|   |-- application.rc
+|   |-- icon.ico
+|   `-- main.cpp
+|-- Makefile
+|-- raylib.make
+|-- raylib-clean.make
+|-- raylib-wave-shooter.make
+|-- build-MinGW-W64.bat
+`-- README.md
 ```
 
 Generated folders such as `bin/` and `obj/` are created by the build process and are not required for source review.
